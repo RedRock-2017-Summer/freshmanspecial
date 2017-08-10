@@ -5,6 +5,7 @@ import android.view.Window;
 
 import com.mredrock.freshmanspecial.Utils.StatisticsView;
 
+
 /**
  * Created by Anriku on 2017/8/8.
  */

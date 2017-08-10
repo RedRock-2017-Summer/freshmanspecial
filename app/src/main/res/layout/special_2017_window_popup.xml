@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="210dp"
+    android:background="#ffffff">
+
+    <TextView
+        android:id="@+id/special_2017_popup_window_tv"
+        android:layout_width="60dp"
+        android:layout_height="30dp"
+        android:layout_gravity="end"
+        android:text="完成"
+        android:textSize="15dp"
+        android:gravity="center"/>
+
+    <com.mredrock.freshmanspecial.Utils.BackGroundView
+        android:layout_width="match_parent"
+        android:layout_height="210dp"
+        android:layout_gravity="center" />
+
+    <com.mredrock.freshmanspecial.Utils.SelectorView
+        android:id="@+id/special_2017_popup_window_sev"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        app:xml_height="150dp"
+        android:layout_gravity="center"
+        app:text_size="2dp"/>
+
+</FrameLayout>
