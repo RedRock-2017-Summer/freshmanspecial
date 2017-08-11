@@ -336,8 +336,15 @@ public class SelectorView extends ViewGroup {
             }
         }
         this.academies = academies;
-        if (button != null) {
-            button.setText(academies.get(flag));
+        //当Button中有学院的时候打开选择框进行一个跳转
+        if (button != null && !TextUtils.isEmpty(button.getText())) {
+            for (int i = 0; i < academies.size(); i++) {
+                if (academies.get(i).equals(button.getText())) {
+                    flag = i;
+                    break;
+                }
+            }
+            views.get(flag).callOnClick();
         }
         setView();
     }

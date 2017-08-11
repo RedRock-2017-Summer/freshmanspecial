@@ -1,6 +1,7 @@
 package com.mredrock.freshmanspecial.Utils;
 
 import com.google.gson.Gson;
+import com.mredrock.freshmanspecial.API.GetApi;
 import com.mredrock.freshmanspecial.API.PostApi;
 
 import io.reactivex.Observable;
@@ -53,6 +54,41 @@ public class NetUtil {
             }
         }).observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
+                .subscribe(new Consumer<ResponseBody>() {
+                    @Override
+                    public void accept(ResponseBody responseBody) throws Exception {
+                        listener.onFinish(responseBody);
+                    }
+                });
+    }
+
+    public static void getGetData(String value, final HttpCallBackListener listener){
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://www.yangruixin.com/")
+                .build();
+
+        GetApi getApi = retrofit.create(GetApi.class);
+
+        final Call<ResponseBody> call = getApi.get(value);
+
+        Observable.create(new ObservableOnSubscribe<ResponseBody>() {
+            @Override
+            public void subscribe(@NonNull final ObservableEmitter<ResponseBody> e) throws Exception {
+                call.enqueue(new Callback<ResponseBody>() {
+                    @Override
+                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                        e.onNext(response.body());
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseBody> call, Throwable t) {
+                        e.onError(t);
+                    }
+                });
+            }
+        })
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<ResponseBody>() {
                     @Override
                     public void accept(ResponseBody responseBody) throws Exception {

@@ -9,5 +9,5 @@ import android.support.v4.view.ViewPager;
  */
 
 public interface IOrganizationPre {
-    void setTabLayout(FragmentManager manager, TabLayout tabLayout, ViewPager viewPager);
+    void setTabLayout(FragmentManager manager, TabLayout tabLayout);
 }

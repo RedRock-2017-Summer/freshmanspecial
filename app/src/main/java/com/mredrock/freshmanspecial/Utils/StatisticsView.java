@@ -15,6 +15,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
+import android.widget.Toast;
 
 import com.mredrock.freshmanspecial.R;
 
@@ -41,9 +42,9 @@ public class StatisticsView extends View {
     private static final int LINE_WIDTH = 25;
     private static final int DIVIDER = 10 + LINE_WIDTH*2;
     private static final int GREY = Color.parseColor("#cccccc");
-    private static final int LIGHT_YELLOW = Color.parseColor("#ffff99");
-    private static final int LIGHT_BLUE = Color.parseColor("#ccffff");
-    private static final int LIGHT_PURPLE = Color.parseColor("#ccccff");
+    private static final int LIGHT_YELLOW = Color.parseColor("#ffff66");
+    private static final int LIGHT_BLUE = Color.parseColor("#99ccff");
+    private static final int LIGHT_PURPLE = Color.parseColor("#0099cc");
     private static final int LIGHT_ORANGE = Color.parseColor("#ffcc99");
     private int[] colors = {LIGHT_YELLOW,LIGHT_BLUE,LIGHT_PURPLE,LIGHT_ORANGE};
     private DecimalFormat format = new DecimalFormat( "0.00 ");
@@ -122,9 +123,9 @@ public class StatisticsView extends View {
         pTop = getPaddingTop();
         pBottom = getPaddingBottom();
 
-        rOut = Math.min((getWidth() - pLeft - pRight) / 2, ((getHeight() - pTop - pBottom) / 2)*0.8f);
+        rOut = Math.min((getWidth() - pLeft - pRight) / 2, ((getHeight() - pTop - pBottom) / 2)*0.7f);
         x = rOut + pLeft + Math.abs((getWidth() - pLeft - pRight) / 2 - rOut);
-        y = rOut + pTop + Math.abs(((getHeight() - pTop - pBottom) / 2)*0.8f - rOut);
+        y = rOut + pTop + Math.abs(((getHeight() - pTop - pBottom) / 2)*0.7f - rOut);
         rIn = rOut - LINE_WIDTH * 2;
 
 
@@ -160,7 +161,7 @@ public class StatisticsView extends View {
         paint4.setStrokeWidth(45);
         paint4.setStrokeCap(Paint.Cap.ROUND);
         paint4.setColor(colors[i % colors.length]);
-        paint4.setAlpha(40);
+        paint4.setAlpha(50);
         canvas.drawArc(new RectF(x - (rOut + rIn) / 2 + change, y - (rOut + rIn) / 2 + change, x + (rOut + rIn) / 2 - change,
                 y + (rOut + rIn) / 2 - change), 270, 360, false, paint4);
 
@@ -170,7 +171,8 @@ public class StatisticsView extends View {
                 y + (rOut + rIn) / 2 - change), 270, fraction[i] * 360, false, paint4);
 
 
-        paint1.setColor(GREY);
+        paint1.setColor(colors[i % colors.length]);
+        paint1.setAlpha(230);
 
         //开始的半圆
         path.addArc(new RectF(x - LINE_WIDTH, y - rOut + change, x + LINE_WIDTH, y - rIn + change), 90, 180);
@@ -185,10 +187,11 @@ public class StatisticsView extends View {
         path.addArc(new RectF(x - rIn + change, y - rIn + change, x + rIn - change, y + rIn - change), 270, fraction[i] * 360);
 
         //画下面的注释
-        float vWidth = (getWidth() - pLeft - pRight) / values.length;
-        float vHeight = rOut*2 + pTop + ((getHeight() - pTop - pBottom) / 2)*0.1f;
-        float vR = ((getHeight() - pTop - pBottom) / 2)*0.1f*0.6f;
-        path.addCircle(vWidth*i + vR,vHeight + ((getHeight() - pTop - pBottom) / 2)*0.1f*0.4f,vR, Path.Direction.CW);
+        float vWidth = (getWidth() - pLeft - pRight) / 3;
+        float vHeight = rOut*2 + pTop + (getHeight() - pTop - pBottom)*0.2f / 4 / 2;
+        float vR = (getHeight() - pTop - pBottom)*0.2f / 4 / 2;
+        float x2 =  (getHeight() - pTop - pBottom)*0.1f / 5;
+        path.addCircle(vWidth + vR,vHeight + 2*vR*i + x2*(i + 1),vR, Path.Direction.CW);
 
         canvas.drawPath(path, paint1);
 
@@ -196,7 +199,7 @@ public class StatisticsView extends View {
         Paint paint2 = new Paint();
         paint2.setColor(colors[i % colors.length]);
         paint2.setStyle(Paint.Style.FILL);
-        canvas.drawCircle(vWidth*i + vR,vHeight + ((getHeight() - pTop - pBottom) / 2)*0.1f*0.4f,vR - 2.5f,paint2);
+        canvas.drawCircle(vWidth + vR,vHeight + 2*vR*i + x2*(i + 1),vR - 2.5f,paint2);
 
 
         //描写数量
@@ -208,7 +211,7 @@ public class StatisticsView extends View {
         //画注释圈的字
         paint3.setColor(Color.BLACK);
         paint3.setTextSize(vR*2);
-        canvas.drawText(subs[i],vWidth*i + vR*2.5f,vHeight + ((getHeight() - pTop - pBottom) / 2)*0.1f*0.4f + vR,paint3);
+        canvas.drawText(subs[i],vWidth + vR*2.5f,vHeight + vR + 2*vR*i + x2*(i + 1) ,paint3);
 
     }
 }

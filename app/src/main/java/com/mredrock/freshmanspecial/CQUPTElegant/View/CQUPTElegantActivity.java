@@ -1,7 +1,9 @@
 package com.mredrock.freshmanspecial.CQUPTElegant.View;
 
+import android.graphics.Color;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +16,8 @@ import com.mredrock.freshmanspecial.CQUPTElegant.Interface.ICQUPTElegantAct;
 import com.mredrock.freshmanspecial.CQUPTElegant.Interface.ICQUPTElegantPre;
 import com.mredrock.freshmanspecial.CQUPTElegant.Presenter.CQUPTElegantPresenter;
 import com.mredrock.freshmanspecial.R;
+
+import org.zackratos.ultimatebar.UltimateBar;
 
 public class CQUPTElegantActivity extends AppCompatActivity implements ICQUPTElegantAct, TabLayout.OnTabSelectedListener {
 
@@ -41,6 +45,9 @@ public class CQUPTElegantActivity extends AppCompatActivity implements ICQUPTEle
         tabLayout.addOnTabSelectedListener(this);
         icquptElegantPre.modifyTabLayout(tabLayout);
 
+        //同开源库进行状态栏的设置
+        UltimateBar ultimateBar = new UltimateBar(this);
+        ultimateBar.setColorBar(ContextCompat.getColor(this, R.color.colorPrimary));
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null){

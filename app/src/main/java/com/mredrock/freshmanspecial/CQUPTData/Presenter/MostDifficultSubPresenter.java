@@ -45,17 +45,20 @@ public class MostDifficultSubPresenter implements IMostDifficultSubPre {
             public void onClick(View view) {
                 final PopupWindowUtil popupWindowUtil = PopupWindowUtil.getInstance(R.layout.special_2017_window_popup, R.style.Popupwindow
                         , iMostDifficultSubFrg.getLayoutInflater(), iMostDifficultSubFrg.getWindow());
-                popupWindowUtil.bottomWindow(view);
-                FrameLayout frameLayout = popupWindowUtil.getFrameLayout();
-                //特别注意SelectorView的加载要放在方法里面直接后面会得不到数据
-                getAcademiesData(academicButton, frameLayout);
-                TextView textView = frameLayout.findViewById(R.id.special_2017_popup_window_tv);
-                textView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        popupWindowUtil.getPopupWindow().dismiss();
-                    }
-                });
+                //用于实现两个个Button间的PopupView不会冲突
+                if (popupWindowUtil.getPopupWindow() == null || !popupWindowUtil.getPopupWindow().isShowing()) {
+                    popupWindowUtil.bottomWindow(view);
+                    FrameLayout frameLayout = popupWindowUtil.getFrameLayout();
+                    //特别注意SelectorView的加载要放在方法里面直接后面会得不到数据
+                    getAcademiesData(academicButton, frameLayout);
+                    TextView textView = frameLayout.findViewById(R.id.special_2017_popup_window_tv);
+                    textView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            popupWindowUtil.getPopupWindow().dismiss();
+                        }
+                    });
+                }
             }
         });
 
@@ -67,17 +70,19 @@ public class MostDifficultSubPresenter implements IMostDifficultSubPre {
                 } else {
                     final PopupWindowUtil popupWindowUtil = PopupWindowUtil.getInstance(R.layout.special_2017_window_popup, R.style.Popupwindow
                             , iMostDifficultSubFrg.getLayoutInflater(), iMostDifficultSubFrg.getWindow());
-                    popupWindowUtil.bottomWindow(view);
-                    FrameLayout frameLayout = popupWindowUtil.getFrameLayout();
-                    getMajorsData(academicButton, majorButton, frameLayout);
-                    TextView textView = frameLayout.findViewById(R.id.special_2017_popup_window_tv);
-                    textView.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            getRatio(majorButton);
-                            popupWindowUtil.getPopupWindow().dismiss();
-                        }
-                    });
+                    if (popupWindowUtil.getPopupWindow() == null || !popupWindowUtil.getPopupWindow().isShowing()) {
+                        popupWindowUtil.bottomWindow(view);
+                        FrameLayout frameLayout = popupWindowUtil.getFrameLayout();
+                        getMajorsData(academicButton, majorButton, frameLayout);
+                        TextView textView = frameLayout.findViewById(R.id.special_2017_popup_window_tv);
+                        textView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                getRatio(majorButton);
+                                popupWindowUtil.getPopupWindow().dismiss();
+                            }
+                        });
+                    }
                 }
             }
         });

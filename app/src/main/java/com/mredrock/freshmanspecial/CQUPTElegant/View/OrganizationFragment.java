@@ -19,12 +19,11 @@ import com.mredrock.freshmanspecial.R;
  * Created by Anriku on 2017/8/10.
  */
 
-public class OrganizationFragment extends Fragment implements IOrganizationFrg, TabLayout.OnTabSelectedListener {
+public class OrganizationFragment extends Fragment implements IOrganizationFrg {
 
     private IOrganizationPre iOrganizationPre;
     private View view;
     private TabLayout tabLayout;
-    private ViewPager viewPager;
 
     @Nullable
     @Override
@@ -42,25 +41,13 @@ public class OrganizationFragment extends Fragment implements IOrganizationFrg, 
     private void initView() {
         iOrganizationPre = new OrganizationPresenter(this);
         tabLayout = view.findViewById(R.id.special_2017_frg_organization_tl);
-        viewPager = view.findViewById(R.id.special_2017_frg_organization_vp);
 
         FragmentManager manager = getActivity().getSupportFragmentManager();
-        iOrganizationPre.setTabLayout(manager,tabLayout,viewPager);
-        tabLayout.addOnTabSelectedListener(this);
+        iOrganizationPre.setTabLayout(manager,tabLayout);
     }
 
     @Override
-    public void onTabSelected(TabLayout.Tab tab) {
-        viewPager.setCurrentItem(tab.getPosition());
-    }
-
-    @Override
-    public void onTabUnselected(TabLayout.Tab tab) {
-
-    }
-
-    @Override
-    public void onTabReselected(TabLayout.Tab tab) {
-
+    public FragmentManager getTheFragmentManager() {
+        return getActivity().getSupportFragmentManager();
     }
 }
