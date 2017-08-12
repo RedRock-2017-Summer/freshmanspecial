@@ -1,5 +1,6 @@
 package com.mredrock.freshmanspecial.CQUPTElegant.Interface;
 
+import android.content.Context;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
@@ -9,5 +10,5 @@ import android.support.v4.view.ViewPager;
  */
 
 public interface IOrganizationPre {
-    void setTabLayout(FragmentManager manager, TabLayout tabLayout);
+    void setTabLayout(Context context,FragmentManager manager, TabLayout tabLayout);
 }

@@ -15,9 +15,10 @@ import com.mredrock.freshmanspecial.Adapter.FreshmanSpecialViewPagerAdapter;
 import com.mredrock.freshmanspecial.CQUPTElegant.Interface.ICQUPTElegantAct;
 import com.mredrock.freshmanspecial.CQUPTElegant.Interface.ICQUPTElegantPre;
 import com.mredrock.freshmanspecial.CQUPTElegant.View.BeautifulFragment;
-import com.mredrock.freshmanspecial.CQUPTElegant.View.ExcellenceFragment;
-import com.mredrock.freshmanspecial.CQUPTElegant.View.OrganizationFragment;
-import com.mredrock.freshmanspecial.CQUPTElegant.View.OriginalFragment;
+import com.mredrock.freshmanspecial.CQUPTElegant.View.ExcellenceStuFragment;
+import com.mredrock.freshmanspecial.CQUPTElegant.View.ExcellenceTechFragment;
+import com.mredrock.freshmanspecial.CQUPTElegant.View.StudentsFragment;
+import com.mredrock.freshmanspecial.CQUPTElegant.View.NatureFragment;
 import com.mredrock.freshmanspecial.R;
 
 import java.lang.reflect.Field;
@@ -38,12 +39,13 @@ public class CQUPTElegantPresenter implements ICQUPTElegantPre {
 
     @Override
     public void setTabLayout(FragmentManager fragmentManager, TabLayout tabLayout, ViewPager viewPager) {
-        String[] titles = {"学生组织","原创重邮","美在重邮","优秀师生"};
+        String[] titles = {"学生组织","原创重邮","美在重邮","优秀老师","优秀学生"};
         List<Fragment> fragments = new ArrayList<>();
-        fragments.add(new OrganizationFragment());
-        fragments.add(new OriginalFragment());
+        fragments.add(new StudentsFragment());
+        fragments.add(new NatureFragment());
         fragments.add(new BeautifulFragment());
-        fragments.add(new ExcellenceFragment());
+        fragments.add(new ExcellenceTechFragment());
+        fragments.add(new ExcellenceStuFragment());
 
         for (String title:
                 titles) {

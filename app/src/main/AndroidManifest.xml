@@ -11,17 +11,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CQUPTData.View.CQUPTDataActivity"></activity>
+        <activity android:name=".CQUPTData.View.CQUPTDataActivity" />
         <activity android:name=".CQUPTElegant.View.CQUPTElegantActivity"></activity>
         <activity android:name=".CQUPTMilitaryTraining.View.CQUPTMilitaryActivity" />
-        <activity android:name=".CQUPTStrategy.View.CQUPTStrategyActivity">
+        <activity android:name=".CQUPTStrategy.View.CQUPTStrategyActivity" />
+        <activity android:name=".Utils.ImageActivity" />
+        <activity
+            android:name=".Utils.DialogActivity"
+            android:theme="@style/Theme.ActivityDialogStyle" />
+        <activity android:name=".FreshmanSpecialActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Utils.ImageActivity"></activity>
     </application>
 
 </manifest>

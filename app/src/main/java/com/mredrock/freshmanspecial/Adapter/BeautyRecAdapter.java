@@ -10,25 +10,25 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.mredrock.freshmanspecial.CQUPTStrategy.Model.Environment;
+import com.mredrock.freshmanspecial.CQUPTElegant.Model.Beauty;
 import com.mredrock.freshmanspecial.R;
 
 /**
- * Created by Anriku on 2017/8/11.
+ * Created by Anriku on 2017/8/12.
  */
 
-public class EnvironmentRecAdapter extends RecyclerView.Adapter<EnvironmentRecAdapter.ViewHolder> {
+public class BeautyRecAdapter extends RecyclerView.Adapter<BeautyRecAdapter.ViewHolder>{
 
     private Context context;
-    private Environment environment;
+    private Beauty beauty;
 
-    public EnvironmentRecAdapter(Context context, Environment environment) {
+    public BeautyRecAdapter(Context context, Beauty beauty) {
         this.context = context;
-        this.environment = environment;
+        this.beauty = beauty;
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public BeautyRecAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (context == null){
             context = parent.getContext();
         }
@@ -37,12 +37,12 @@ public class EnvironmentRecAdapter extends RecyclerView.Adapter<EnvironmentRecAd
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        if (environment.getStatus().equals("200")){
-            Environment.EnvironmentData data = environment.getData().get(position);
+    public void onBindViewHolder(BeautyRecAdapter.ViewHolder holder, int position) {
+        if (beauty.getStatus().equals("200")){
+            Beauty.BeautyData data = beauty.getData().get(position);
             holder.titleTv.setText(data.getTitle());
             holder.contentTv.setText(data.getContent());
-            Glide.with(context).load(data.getUrl().get(0)).into(holder.imageView);
+            Glide.with(context).load(data.getUrl()).into(holder.imageView);
         }else {
             Toast.makeText(context,"请求数据失败,请检查你的网络连接!",Toast.LENGTH_SHORT).show();
         }
@@ -50,7 +50,7 @@ public class EnvironmentRecAdapter extends RecyclerView.Adapter<EnvironmentRecAd
 
     @Override
     public int getItemCount() {
-        return environment.getData().size();
+        return beauty.getData().size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

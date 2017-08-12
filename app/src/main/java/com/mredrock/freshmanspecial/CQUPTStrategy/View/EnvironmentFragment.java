@@ -48,7 +48,7 @@ public class EnvironmentFragment extends Fragment {
     private void initView() {
         recyclerView = view.findViewById(R.id.special_2017_frg_environment_rv);
 
-        NetUtil.getGetData("SchoolBuildings", new NetUtil.HttpCallBackListener() {
+        NetUtil.getGetData("http://www.yangruixin.com/","SchoolBuildings",NetUtil.GUIDE_GET, new NetUtil.HttpCallBackListener() {
             @Override
             public void onFinish(ResponseBody responseBody) {
                 Gson gson = new Gson();

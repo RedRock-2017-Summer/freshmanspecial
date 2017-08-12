@@ -3,11 +3,21 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+    <TextView
+        android:id="@+id/special_2017_frg_organizations_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:visibility="gone"
+        android:layout_margin="10dp"/>
+
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/special_2017_frg_beautiful_rv"
+        android:id="@+id/special_2017_frg_organizations_rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
     </android.support.v7.widget.RecyclerView>
+
 
 </LinearLayout>

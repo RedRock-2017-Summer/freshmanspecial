@@ -42,7 +42,7 @@ public class QQGroupPresenter implements IQQGroupPre {
     @Override
     public void setAutoCompleteTextView(final Context context, final AutoCompleteTextView autoCompleteTextView,
                                         final TextView cancelTv, final Button searchBt, final Button cancelBt, final TextView resultTv) {
-        NetUtil.getData("QQGroup", new NetUtil.HttpCallBackListener() {
+        NetUtil.getPostData("http://www.yangruixin.com/","QQGroup",NetUtil.RATIO_POST, new NetUtil.HttpCallBackListener() {
             @Override
             public void onFinish(ResponseBody responseBody) {
                 //Gson解析

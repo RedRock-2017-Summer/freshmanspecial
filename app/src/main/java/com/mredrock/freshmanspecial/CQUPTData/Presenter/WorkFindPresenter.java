@@ -59,7 +59,7 @@ public class WorkFindPresenter implements IWorkFindPre {
     }
 
     private void getWorkData(final Button button, final SelectorView selectorView) {
-        NetUtil.getData("WorkRatio", new NetUtil.HttpCallBackListener() {
+        NetUtil.getPostData("http://www.yangruixin.com/","WorkRatio",NetUtil.RATIO_POST, new NetUtil.HttpCallBackListener() {
             @Override
             public void onFinish(ResponseBody responseBody) {
                 Gson gson = new Gson();

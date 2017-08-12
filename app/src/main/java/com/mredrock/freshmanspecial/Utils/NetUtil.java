@@ -1,8 +1,6 @@
 package com.mredrock.freshmanspecial.Utils;
 
-import com.google.gson.Gson;
-import com.mredrock.freshmanspecial.API.GetApi;
-import com.mredrock.freshmanspecial.API.PostApi;
+import com.mredrock.freshmanspecial.API.Api;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
@@ -16,7 +14,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by Anriku on 2017/8/9.
@@ -24,23 +21,33 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class NetUtil {
 
+    public static final int RATIO_GET = 0;
+    public static final int TEXT_GET = 1;
+    public static final int RATIO_POST = 2;
+    public static final int GUIDE_GET = 3;
+
     public interface HttpCallBackListener{
         void onFinish(ResponseBody responseBody);
     }
 
-    public static void getData(String value, final HttpCallBackListener listener) {
+    public static void getPostData(String baseUrl,String value,int postMethod,final HttpCallBackListener listener) {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://www.yangruixin.com/")
+                .baseUrl(baseUrl)
                 .build();
 
-        PostApi postApi = retrofit.create(PostApi.class);
+        Api api = retrofit.create(Api.class);
 
-        final Call<ResponseBody> call = postApi.testHttpGet(value);
+        Call<ResponseBody> call = null;
 
+        if (postMethod == NetUtil.RATIO_POST){
+            call = api.ratioPost(value);
+        }
+
+        final Call<ResponseBody> finalCall = call;
         Observable.create(new ObservableOnSubscribe<ResponseBody>() {
             @Override
             public void subscribe(@NonNull final ObservableEmitter<ResponseBody> e) throws Exception {
-                call.enqueue(new Callback<ResponseBody>() {
+                finalCall.enqueue(new Callback<ResponseBody>() {
                     @Override
                     public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                         e.onNext(response.body());
@@ -62,19 +69,27 @@ public class NetUtil {
                 });
     }
 
-    public static void getGetData(String value, final HttpCallBackListener listener){
+    public static void getGetData(String baseUrl,String value,int getMethod,final HttpCallBackListener listener){
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://www.yangruixin.com/")
+                .baseUrl(baseUrl)
                 .build();
 
-        GetApi getApi = retrofit.create(GetApi.class);
+        Api api = retrofit.create(Api.class);
 
-        final Call<ResponseBody> call = getApi.get(value);
+        Call<ResponseBody> call = null;
+        if (getMethod == NetUtil.TEXT_GET){
+            call = api.textGet(value);
+        }else if (getMethod == NetUtil.RATIO_GET){
+            call = api.ratioGet(value);
+        }else if (getMethod == NetUtil.GUIDE_GET){
+            call = api.guideGet(value);
+        }
 
+        final Call<ResponseBody> finalCall = call;
         Observable.create(new ObservableOnSubscribe<ResponseBody>() {
             @Override
             public void subscribe(@NonNull final ObservableEmitter<ResponseBody> e) throws Exception {
-                call.enqueue(new Callback<ResponseBody>() {
+                finalCall.enqueue(new Callback<ResponseBody>() {
                     @Override
                     public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                         e.onNext(response.body());

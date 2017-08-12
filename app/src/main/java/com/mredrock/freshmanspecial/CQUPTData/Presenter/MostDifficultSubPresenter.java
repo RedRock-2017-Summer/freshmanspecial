@@ -151,7 +151,7 @@ public class MostDifficultSubPresenter implements IMostDifficultSubPre {
 
     private void getAcademiesData(final Button academicButton, final FrameLayout frameLayout) {
         final List<String> academies = new ArrayList<>();
-        NetUtil.getData("FailRatio", new NetUtil.HttpCallBackListener() {
+        NetUtil.getPostData("http://www.yangruixin.com/","FailRatio",NetUtil.RATIO_POST, new NetUtil.HttpCallBackListener() {
             @Override
             public void onFinish(ResponseBody responseBody) {
                 Gson gson = new Gson();

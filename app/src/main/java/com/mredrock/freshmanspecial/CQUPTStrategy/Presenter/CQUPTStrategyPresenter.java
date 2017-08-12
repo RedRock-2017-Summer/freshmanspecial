@@ -12,18 +12,13 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.mredrock.freshmanspecial.Adapter.FreshmanSpecialViewPagerAdapter;
-import com.mredrock.freshmanspecial.CQUPTMilitaryTraining.View.ElegantFragment;
-import com.mredrock.freshmanspecial.CQUPTMilitaryTraining.View.TipsFragment;
 import com.mredrock.freshmanspecial.CQUPTStrategy.Interface.ICQUPTStrategyAct;
 import com.mredrock.freshmanspecial.CQUPTStrategy.Interface.ICQUPTStrategyPre;
-import com.mredrock.freshmanspecial.CQUPTStrategy.View.DailyFragment;
-import com.mredrock.freshmanspecial.CQUPTStrategy.View.DormitoryFragment;
+import com.mredrock.freshmanspecial.CQUPTStrategy.View.DailyFoodSceneryFragment;
+import com.mredrock.freshmanspecial.CQUPTStrategy.View.DormitoryMessFragment;
 import com.mredrock.freshmanspecial.CQUPTStrategy.View.EnvironmentFragment;
-import com.mredrock.freshmanspecial.CQUPTStrategy.View.FoodFragment;
-import com.mredrock.freshmanspecial.CQUPTStrategy.View.MessFragment;
 import com.mredrock.freshmanspecial.CQUPTStrategy.View.NoticeFragment;
 import com.mredrock.freshmanspecial.CQUPTStrategy.View.QQGroupFragment;
-import com.mredrock.freshmanspecial.CQUPTStrategy.View.SceneryFragment;
 import com.mredrock.freshmanspecial.R;
 
 import java.lang.reflect.Field;
@@ -47,13 +42,13 @@ public class CQUPTStrategyPresenter implements ICQUPTStrategyPre {
         String[] titles = {"校园环境","学生寝室","学校食堂","入学须知","QQ群","日常生活","周边美食","周边美景"};
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(new EnvironmentFragment());
-        fragments.add(new DormitoryFragment());
-        fragments.add(new MessFragment());
+        fragments.add(new DormitoryMessFragment("Dormitory"));
+        fragments.add(new DormitoryMessFragment("Canteen"));
         fragments.add(new NoticeFragment());
         fragments.add(new QQGroupFragment());
-        fragments.add(new DailyFragment());
-        fragments.add(new FoodFragment());
-        fragments.add(new SceneryFragment());
+        fragments.add(new DailyFoodSceneryFragment("LifeInNear"));
+        fragments.add(new DailyFoodSceneryFragment("Cate"));
+        fragments.add(new DailyFoodSceneryFragment("BeautyInNear"));
 
         for (String title:
                 titles) {

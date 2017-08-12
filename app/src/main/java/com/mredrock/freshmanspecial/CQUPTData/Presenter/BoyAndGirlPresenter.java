@@ -51,7 +51,7 @@ public class BoyAndGirlPresenter implements IBoyAndGirlPre {
     private void getData(final Button button, final PopupWindowUtil popupWindowUtil) {
 
 
-        NetUtil.getData("SexRatio", new NetUtil.HttpCallBackListener() {
+        NetUtil.getPostData("http://www.yangruixin.com/","SexRatio", NetUtil.RATIO_POST,new NetUtil.HttpCallBackListener() {
             @Override
             public void onFinish(ResponseBody responseBody) {
                 Gson gson = new Gson();

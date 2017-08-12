@@ -45,9 +45,10 @@ public class CQUPTElegantActivity extends AppCompatActivity implements ICQUPTEle
         tabLayout.addOnTabSelectedListener(this);
         icquptElegantPre.modifyTabLayout(tabLayout);
 
-        //同开源库进行状态栏的设置
+        //使用开源库进行状态栏的设置
         UltimateBar ultimateBar = new UltimateBar(this);
         ultimateBar.setColorBar(ContextCompat.getColor(this, R.color.colorPrimary));
+
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null){
