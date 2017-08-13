@@ -2,6 +2,7 @@ package com.mredrock.freshmanspecial.Adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +36,11 @@ public class OrganizationsRecAdapter extends RecyclerView.Adapter<OrganizationsR
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+        if (!TextUtils.isEmpty(organizationData.getResume())){
+            holder.resumeTv.setVisibility(View.VISIBLE);
+            holder.resumeTv.setText(organizationData.getResume());
+            holder.dView.setVisibility(View.VISIBLE);
+        }
         holder.titleTv.setText(organizationData.getDepartment().get(position).getName());
         holder.contentTv.setText(organizationData.getDepartment().get(position).getResume());
     }
@@ -47,10 +53,14 @@ public class OrganizationsRecAdapter extends RecyclerView.Adapter<OrganizationsR
     public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView titleTv;
         private TextView contentTv;
+        private TextView resumeTv;
+        private View dView;
         public ViewHolder(View itemView) {
             super(itemView);
+            dView = itemView.findViewById(R.id.special_2017_organizations_rec_item_v);
             titleTv = itemView.findViewById(R.id.special_2017_organizations_rec_item_title_tv);
             contentTv = itemView.findViewById(R.id.special_2017_organizations_rec_item_content_tv);
+            resumeTv = itemView.findViewById(R.id.special_2017_organizations_rec_item_resume_tv);
         }
     }
 }

@@ -2,10 +2,12 @@ package com.mredrock.freshmanspecial.CQUPTStrategy.Presenter;
 
 import android.content.Context;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.CardView;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -41,8 +43,9 @@ public class QQGroupPresenter implements IQQGroupPre {
 
     @Override
     public void setAutoCompleteTextView(final Context context, final AutoCompleteTextView autoCompleteTextView,
-                                        final TextView cancelTv, final Button searchBt, final Button cancelBt, final TextView resultTv) {
-        NetUtil.getPostData("http://www.yangruixin.com/","QQGroup",NetUtil.RATIO_POST, new NetUtil.HttpCallBackListener() {
+                                        final TextView cancelTv, final Button searchBt, final Button cancelBt,
+                                        final TextView resultTv) {
+        NetUtil.getPostData("http://www.yangruixin.com/", "QQGroup", NetUtil.RATIO_POST, new NetUtil.HttpCallBackListener() {
             @Override
             public void onFinish(ResponseBody responseBody) {
                 //Gson解析
@@ -94,7 +97,7 @@ public class QQGroupPresenter implements IQQGroupPre {
                                     String sc = String.valueOf(autoCompleteTextView.getText());
                                     List<Integer> index = new ArrayList<>();
                                     for (int i = 0; i < qqGroup.getData().size(); i++) {
-                                        if (qqGroup.getData().get(i).getGroupName().length() >= sc.length()){
+                                        if (qqGroup.getData().get(i).getGroupName().length() >= sc.length()) {
                                             if (sc.equals(qqGroup.getData().get(i).getGroupName().substring(0, sc.length()))) {
                                                 index.add(i);
                                             }
@@ -111,8 +114,7 @@ public class QQGroupPresenter implements IQQGroupPre {
                                     }
                                     resultTv.setTextSize(20);
                                     resultTv.setText(result);
-                                }
-                                else {
+                                } else {
                                     StringBuilder result = new StringBuilder(100);
                                     result.append("新生群:\n");
                                     for (int i = 0; i < qqGroup.getData().size(); i++) {

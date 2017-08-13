@@ -13,7 +13,6 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.mredrock.freshmanspecial.Adapter.EnvironmentRecAdapter;
-import com.mredrock.freshmanspecial.Adapter.ImageRecAdapter;
 import com.mredrock.freshmanspecial.CQUPTStrategy.Model.Environment;
 import com.mredrock.freshmanspecial.R;
 import com.mredrock.freshmanspecial.Utils.NetUtil;

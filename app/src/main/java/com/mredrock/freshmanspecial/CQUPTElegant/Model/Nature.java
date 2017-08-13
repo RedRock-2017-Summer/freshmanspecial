@@ -47,6 +47,15 @@ public class Nature {
     public class NatureData{
         private String name;
         private String url;
+        private String cover;
+
+        public String getCover() {
+            return cover;
+        }
+
+        public void setCover(String cover) {
+            this.cover = cover;
+        }
 
         public String getName() {
             return name;

@@ -30,11 +30,11 @@ public class ImageActivity extends AppCompatActivity {
     private void initView() {
         viewPager = (HackyViewPager) findViewById(R.id.special_2017_ac_image_hvp);
         Intent intent = getIntent();
-        Dormitory.DormitoryData dormitoryData = (Dormitory.DormitoryData) intent.getSerializableExtra("image_data");
+        String[] urls = (String[]) intent.getSerializableExtra("image_data");
         List<PhotoView> photoViews = new ArrayList<>();
-        for (int i = 0; i < dormitoryData.getUrl().size(); i++) {
+        for (int i = 0; i < urls.length; i++) {
             PhotoView photoView = new PhotoView(this);
-            Glide.with(this).load(dormitoryData.getUrl().get(i)).into(photoView);
+            Glide.with(this).load(urls[i]).into(photoView);
             photoViews.add(photoView);
         }
         pagerAdapter = new ImageViewPagerAdapter(photoViews);

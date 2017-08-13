@@ -23,7 +23,6 @@ public class OrganizationsFragment extends Fragment{
 
     private Organization.OrganizationData organizationData;
     private View view;
-    private TextView textView;
     private RecyclerView recyclerView;
     private LinearLayoutManager manager;
     private OrganizationsRecAdapter adapter;
@@ -48,11 +47,6 @@ public class OrganizationsFragment extends Fragment{
 
     private void initView() {
         recyclerView = view.findViewById(R.id.special_2017_frg_organizations_rv);
-        textView = view.findViewById(R.id.special_2017_frg_organizations_tv);
-        if (!TextUtils.isEmpty(organizationData.getResume())){
-            textView.setVisibility(View.VISIBLE);
-            textView.setText(organizationData.getResume());
-        }
         manager = new LinearLayoutManager(getContext());
         adapter = new OrganizationsRecAdapter(getContext(),organizationData);
         recyclerView.setLayoutManager(manager);

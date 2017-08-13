@@ -6,8 +6,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.mredrock.freshmanspecial.R;
+import com.mredrock.freshmanspecial.Utils.TxtReadUtil;
 
 /**
  * Created by Anriku on 2017/8/10.
@@ -16,6 +18,11 @@ import com.mredrock.freshmanspecial.R;
 public class TipsFragment extends Fragment {
 
     private View view;
+    private TextView foodTv;
+    private TextView sunTv;
+    private TextView medicineTv;
+    private TextView otherTv;
+
 
     @Nullable
     @Override
@@ -27,5 +34,19 @@ public class TipsFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        initView();
+    }
+
+    private void initView() {
+        foodTv = view.findViewById(R.id.special_2017_frg_tips_food_tv);
+        sunTv = view.findViewById(R.id.special_2017_frg_tips_sun_tv);
+        medicineTv = view.findViewById(R.id.special_2017_frg_tips_medicine_tv);
+        otherTv = view.findViewById(R.id.special_2017_frg_tips_other_tv);
+
+        foodTv.setText(TxtReadUtil.getContent(getResources().openRawResource(R.raw.food)));
+        sunTv.setText(TxtReadUtil.getContent(getResources().openRawResource(R.raw.sun)));
+        medicineTv.setText(TxtReadUtil.getContent(getResources().openRawResource(R.raw.medicine)));
+        otherTv.setText(TxtReadUtil.getContent(getResources().openRawResource(R.raw.other)));
     }
 }

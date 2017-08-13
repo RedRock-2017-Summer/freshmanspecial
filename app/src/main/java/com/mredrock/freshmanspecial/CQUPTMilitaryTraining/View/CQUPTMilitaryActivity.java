@@ -2,6 +2,7 @@ package com.mredrock.freshmanspecial.CQUPTMilitaryTraining.View;
 
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +15,8 @@ import com.mredrock.freshmanspecial.CQUPTMilitaryTraining.Interface.ICQUPTMilita
 import com.mredrock.freshmanspecial.CQUPTMilitaryTraining.Interface.ICQUPTMilitaryPre;
 import com.mredrock.freshmanspecial.CQUPTMilitaryTraining.Presenter.CQUPTMilitaryPresenter;
 import com.mredrock.freshmanspecial.R;
+
+import org.zackratos.ultimatebar.UltimateBar;
 
 public class CQUPTMilitaryActivity extends AppCompatActivity implements ICQUPTMilitaryAct, TabLayout.OnTabSelectedListener {
 
@@ -40,6 +43,9 @@ public class CQUPTMilitaryActivity extends AppCompatActivity implements ICQUPTMi
         icquptMilitaryPre.setTabLayout(manager, tabLayout, viewPager);
         tabLayout.addOnTabSelectedListener(this);
         icquptMilitaryPre.modifyTabLayout(tabLayout);
+
+        UltimateBar ultimateBar = new UltimateBar(this);
+        ultimateBar.setColorBar(ContextCompat.getColor(this, R.color.colorPrimary));
 
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
@@ -69,7 +75,7 @@ public class CQUPTMilitaryActivity extends AppCompatActivity implements ICQUPTMi
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                Toast.makeText(this, "Hello", Toast.LENGTH_LONG).show();
+                finish();
                 break;
             default:
                 break;

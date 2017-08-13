@@ -41,21 +41,17 @@ public class ExcellenceStudentRecAdapter extends RecyclerView.Adapter<Excellence
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-        if (excellenceStu.getStatus().equals("200")) {
-            Glide.with(context).load(excellenceStu.getData().get(position).getUrl()).into(holder.civ);
-            holder.nameTv.setText(excellenceStu.getData().get(position).getName());
-            holder.resumeTv.setText(excellenceStu.getData().get(position).getMotto());
-            holder.view.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(context, DialogActivity.class);
-                    intent.putExtra("stu_data",excellenceStu.getData().get(position));
-                    context.startActivity(intent);
-                }
-            });
-        } else {
-            Toast.makeText(context, "请求失败,请检查你的网络连接!", Toast.LENGTH_SHORT).show();
-        }
+        Glide.with(context).load(excellenceStu.getData().get(position).getUrl()).into(holder.civ);
+        holder.nameTv.setText(excellenceStu.getData().get(position).getName());
+        holder.resumeTv.setText("颁奖词:" + excellenceStu.getData().get(position).getMotto());
+        holder.view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, DialogActivity.class);
+                intent.putExtra("stu_data", excellenceStu.getData().get(position));
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override

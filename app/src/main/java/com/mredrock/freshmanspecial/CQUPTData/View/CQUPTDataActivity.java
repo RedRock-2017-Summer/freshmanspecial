@@ -2,6 +2,7 @@ package com.mredrock.freshmanspecial.CQUPTData.View;
 
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +15,8 @@ import com.mredrock.freshmanspecial.CQUPTData.Interface.ICAUPTDataAct;
 import com.mredrock.freshmanspecial.CQUPTData.Interface.ICQUPTDataPre;
 import com.mredrock.freshmanspecial.CQUPTData.Presenter.CQUPTDataPresenter;
 import com.mredrock.freshmanspecial.R;
+
+import org.zackratos.ultimatebar.UltimateBar;
 
 public class CQUPTDataActivity extends AppCompatActivity implements ICAUPTDataAct, TabLayout.OnTabSelectedListener {
 
@@ -40,6 +43,9 @@ public class CQUPTDataActivity extends AppCompatActivity implements ICAUPTDataAc
         ICQUPTDataPre.setTabLayout(manager,tabLayout,viewPager);
         tabLayout.addOnTabSelectedListener(this);
         ICQUPTDataPre.modifyTabLayout(tabLayout);
+
+        UltimateBar ultimateBar = new UltimateBar(this);
+        ultimateBar.setColorBar(ContextCompat.getColor(this, R.color.colorPrimary));
 
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
@@ -72,7 +78,7 @@ public class CQUPTDataActivity extends AppCompatActivity implements ICAUPTDataAc
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case android.R.id.home:
-                Toast.makeText(this,"Hello",Toast.LENGTH_LONG).show();
+                finish();
                 break;
             default:break;
         }

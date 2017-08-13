@@ -3,6 +3,7 @@ package com.mredrock.freshmanspecial.CQUPTStrategy.View;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,7 +35,7 @@ public class QQGroupFragment extends Fragment implements IQQGroupFrg {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.special_2017_fragment_qqgroup,null);
+        view = inflater.inflate(R.layout.special_2017_fragment_qqgroup, null);
         return view;
     }
 
@@ -52,6 +53,7 @@ public class QQGroupFragment extends Fragment implements IQQGroupFrg {
         searchBt = view.findViewById(R.id.special_2017_frg_qqgroup_search_bt);
         cancelBt = view.findViewById(R.id.special_2017_frg_qqgroup_cancel_bt);
         resultTv = view.findViewById(R.id.special_2017_frg_qqgroup_result_tv);
-        iqqGroupPre.setAutoCompleteTextView(getContext(),autoCompleteTextView,cancelTv,searchBt,cancelBt,resultTv);
+        iqqGroupPre.setAutoCompleteTextView(getContext(), autoCompleteTextView, cancelTv,
+                searchBt, cancelBt, resultTv);
     }
 }

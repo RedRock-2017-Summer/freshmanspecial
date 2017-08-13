@@ -2,6 +2,7 @@ package com.mredrock.freshmanspecial.CQUPTStrategy.View;
 
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +15,8 @@ import com.mredrock.freshmanspecial.CQUPTStrategy.Interface.ICQUPTStrategyAct;
 import com.mredrock.freshmanspecial.CQUPTStrategy.Interface.ICQUPTStrategyPre;
 import com.mredrock.freshmanspecial.CQUPTStrategy.Presenter.CQUPTStrategyPresenter;
 import com.mredrock.freshmanspecial.R;
+
+import org.zackratos.ultimatebar.UltimateBar;
 
 public class CQUPTStrategyActivity extends AppCompatActivity implements ICQUPTStrategyAct, TabLayout.OnTabSelectedListener {
 
@@ -40,6 +43,9 @@ public class CQUPTStrategyActivity extends AppCompatActivity implements ICQUPTSt
         icquptStrategyPre.setTabLayout(manager, tabLayout, viewPager);
         tabLayout.addOnTabSelectedListener(this);
         icquptStrategyPre.modifyTabLayout(tabLayout);
+
+        UltimateBar ultimateBar = new UltimateBar(this);
+        ultimateBar.setColorBar(ContextCompat.getColor(this, R.color.colorPrimary));
 
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
@@ -70,7 +76,7 @@ public class CQUPTStrategyActivity extends AppCompatActivity implements ICQUPTSt
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                Toast.makeText(this, "Hello", Toast.LENGTH_LONG).show();
+                finish();
                 break;
             default:
                 break;

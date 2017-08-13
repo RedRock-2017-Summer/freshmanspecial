@@ -19,7 +19,7 @@ import com.mredrock.freshmanspecial.Utils.ImageActivity;
  * Created by Anriku on 2017/8/11.
  */
 
-public class DormitoryMessRecAdapter extends RecyclerView.Adapter<DormitoryMessRecAdapter.ViewHolder>{
+public class DormitoryMessRecAdapter extends RecyclerView.Adapter<DormitoryMessRecAdapter.ViewHolder> {
 
 
     private Context context;
@@ -32,32 +32,32 @@ public class DormitoryMessRecAdapter extends RecyclerView.Adapter<DormitoryMessR
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        if (context == null){
+        if (context == null) {
             context = parent.getContext();
         }
-        View view = LayoutInflater.from(context).inflate(R.layout.special_2017_dormitory_rec_item,null);
+        View view = LayoutInflater.from(context).inflate(R.layout.special_2017_dormitory_rec_item, null);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-        if (dormitory.getStatus().equals("200")){
-            holder.titleTv.setText(dormitory.getData().get(position).getName());
-            holder.contentTv.setText(dormitory.getData().get(position).getResume());
-            holder.countTv.setText(String.valueOf(dormitory.getData().get(position).getUrl().size()) + "张");
-            Glide.with(context).load(dormitory.getData().get(position).getUrl().get(0)).into(holder.imageView);
+        holder.titleTv.setText(dormitory.getData().get(position).getName());
+        holder.contentTv.setText(dormitory.getData().get(position).getResume());
+        holder.countTv.setText(String.valueOf(dormitory.getData().get(position).getUrl().size()) + "张");
+        Glide.with(context).load(dormitory.getData().get(position).getUrl().get(0)).into(holder.imageView);
 
-            holder.imageView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(context, ImageActivity.class);
-                    intent.putExtra("image_data",dormitory.getData().get(position));
-                    context.startActivity(intent);
+        holder.imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, ImageActivity.class);
+                String[] images = new String[dormitory.getData().get(position).getUrl().size()];
+                for (int i = 0; i < dormitory.getData().size(); i++) {
+                    images[i] = dormitory.getData().get(position).getUrl().get(i);
                 }
-            });
-        }else {
-            Toast.makeText(context,"请求数据失败,请检查你的网络连接!",Toast.LENGTH_SHORT).show();
-        }
+                intent.putExtra("image_data", images);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override

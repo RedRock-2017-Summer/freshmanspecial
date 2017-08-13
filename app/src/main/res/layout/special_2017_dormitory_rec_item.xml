@@ -5,11 +5,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider"
+        android:background="@mipmap/item_divider"/>
+
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_margin="10dp"
-        app:cardCornerRadius="5dp">
+        android:layout_height="200dp"
+        android:layout_margin="@dimen/margin"
+        app:cardCornerRadius="@dimen/radius">
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -23,18 +28,18 @@
 
             <TextView
                 android:id="@+id/special_2017_dormitory_item_count_tv"
-                android:layout_width="65dp"
-                android:layout_height="25dp"
-                android:paddingTop="2dp"
+                android:layout_width="60dp"
+                android:layout_height="22dp"
+                android:layout_gravity="bottom|end"
+                android:layout_marginBottom="@dimen/margin"
+                android:layout_marginRight="@dimen/margin"
+                android:background="@mipmap/dormitory_image_backgroud"
+                android:drawableLeft="@mipmap/dormitory_image"
+                android:gravity="center"
                 android:paddingBottom="2dp"
                 android:paddingLeft="5dp"
-                android:layout_gravity="bottom|end"
-                android:layout_marginBottom="10dp"
-                android:layout_marginRight="10dp"
-                android:gravity="center"
-                android:textColor="#ffffff"
-                android:background="@mipmap/dormitory_image_backgroud"
-                android:drawableLeft="@mipmap/dormitory_iamge" />
+                android:paddingTop="2dp"
+                android:textColor="#ffffff" />
 
         </FrameLayout>
 
@@ -44,18 +49,19 @@
         android:id="@+id/special_2017_dormitory_item_title_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:textStyle="bold"
-        android:textSize="20sp" />
+        android:layout_marginBottom="@dimen/margin"
+        android:layout_marginLeft="@dimen/margin"
+        android:layout_marginRight="@dimen/margin"
+        android:textSize="@dimen/size"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/special_2017_frg_dormitory_item_content_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:textSize="15sp" />
+        android:layout_marginLeft="@dimen/margin"
+        android:layout_marginRight="@dimen/margin"
+        android:layout_marginBottom="@dimen/margin"
+        android:textSize="@dimen/size_small" />
 
 </LinearLayout>

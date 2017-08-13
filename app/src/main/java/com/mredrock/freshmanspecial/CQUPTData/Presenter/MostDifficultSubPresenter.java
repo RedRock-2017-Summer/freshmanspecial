@@ -17,6 +17,9 @@ import com.mredrock.freshmanspecial.Utils.NetUtil;
 import com.mredrock.freshmanspecial.Utils.PopupWindowUtil;
 import com.mredrock.freshmanspecial.Utils.SelectorView;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -151,11 +154,11 @@ public class MostDifficultSubPresenter implements IMostDifficultSubPre {
 
     private void getAcademiesData(final Button academicButton, final FrameLayout frameLayout) {
         final List<String> academies = new ArrayList<>();
-        NetUtil.getPostData("http://www.yangruixin.com/","FailRatio",NetUtil.RATIO_POST, new NetUtil.HttpCallBackListener() {
+        NetUtil.getPostData("http://www.yangruixin.com/", "FailRatio", NetUtil.RATIO_POST, new NetUtil.HttpCallBackListener() {
             @Override
             public void onFinish(ResponseBody responseBody) {
-                Gson gson = new Gson();
                 try {
+                    Gson gson = new Gson();
                     failRatio = gson.fromJson(responseBody.string(), new TypeToken<FailRatio>() {
                     }.getType());
                     if (failRatio.getStatus().equals("200")) {
@@ -172,13 +175,16 @@ public class MostDifficultSubPresenter implements IMostDifficultSubPre {
                                 academies.add(ac);
                             }
                         }
+
+                        SelectorView selectorView = frameLayout.findViewById(R.id.special_2017_popup_window_sev);
+                        selectorView.setButton(academicButton);
+                        selectorView.setAcademies(academies);
+
                     }
-                    SelectorView selectorView = frameLayout.findViewById(R.id.special_2017_popup_window_sev);
-                    selectorView.setButton(academicButton);
-                    selectorView.setAcademies(academies);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+
             }
         });
     }

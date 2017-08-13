@@ -39,7 +39,7 @@ public class CQUPTStrategyPresenter implements ICQUPTStrategyPre {
 
     @Override
     public void setTabLayout(FragmentManager fragmentManager, TabLayout tabLayout, ViewPager viewPager) {
-        String[] titles = {"校园环境","学生寝室","学校食堂","入学须知","QQ群","日常生活","周边美食","周边美景"};
+        String[] titles = {"校园环境", "学生寝室", "学校食堂", "入学须知", "QQ群", "日常生活", "周边美食", "周边美景"};
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(new EnvironmentFragment());
         fragments.add(new DormitoryMessFragment("Dormitory"));
@@ -50,11 +50,11 @@ public class CQUPTStrategyPresenter implements ICQUPTStrategyPre {
         fragments.add(new DailyFoodSceneryFragment("Cate"));
         fragments.add(new DailyFoodSceneryFragment("BeautyInNear"));
 
-        for (String title:
+        for (String title :
                 titles) {
             tabLayout.addTab(tabLayout.newTab().setText(title));
         }
-        FreshmanSpecialViewPagerAdapter viewPagerAdapter = new FreshmanSpecialViewPagerAdapter(fragmentManager,fragments,titles);
+        FreshmanSpecialViewPagerAdapter viewPagerAdapter = new FreshmanSpecialViewPagerAdapter(fragmentManager, fragments, titles);
         viewPager.setAdapter(viewPagerAdapter);
 
         tabLayout.setupWithViewPager(viewPager);
@@ -65,17 +65,14 @@ public class CQUPTStrategyPresenter implements ICQUPTStrategyPre {
     @Override
     public void modifyTabLayout(TabLayout tabLayout) {
         try {
-            LinearLayout layout = (LinearLayout) tabLayout.getChildAt(0);
-            layout.setShowDividers(LinearLayout.SHOW_DIVIDER_MIDDLE);
-            layout.setDividerDrawable(ContextCompat.getDrawable((Context)icquptStrategyAct, R.drawable.diliver));
             Class<?> tab = tabLayout.getClass();
             Field tabStrip = tab.getDeclaredField("mTabStrip");
             tabStrip.setAccessible(true);
             LinearLayout linearLayout = (LinearLayout) tabStrip.get(tabLayout);
-            for (int i =0;i < linearLayout.getChildCount();i++){
+            for (int i = 0; i < linearLayout.getChildCount(); i++) {
                 View child = linearLayout.getChildAt(i);
-                child.setPadding(0,0,0,0);
-                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(0,LinearLayout.LayoutParams.MATCH_PARENT,1);
+                child.setPadding(0, 0, 0, 0);
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1);
                 params.setMarginStart(80);
                 params.setMarginEnd(80);
                 child.setLayoutParams(params);

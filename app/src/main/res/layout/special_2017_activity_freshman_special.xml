@@ -26,14 +26,14 @@
 
     </android.support.v7.widget.Toolbar>
 
-
-    <ImageView
-        android:id="@+id/special_2017_ac_freshman_special_strategy_iv"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_margin="20dp"
-        android:scaleType="centerCrop"
-        android:src="@mipmap/strategy" />
+        <ImageView
+            android:id="@+id/special_2017_ac_freshman_special_strategy_iv"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_margin="20dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/strategy" />
+    
 
     <ImageView
         android:id="@+id/special_2017_ac_freshman_special_elegant_iv"

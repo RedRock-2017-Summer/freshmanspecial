@@ -1,6 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider"
+                android:background="@mipmap/item_divider" />
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin"
+                android:drawableLeft="@mipmap/line"
+                android:gravity="center"
+                android:text="新生清单"
+                android:textSize="@dimen/size"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/special_2017_frg_notice_list_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin"
+                android:layout_marginRight="@dimen/margin"
+                android:textSize="@dimen/size_small" />
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@mipmap/item_divider" />
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin"
+                android:drawableLeft="@mipmap/line"
+                android:gravity="center"
+                android:text="安全须知"
+                android:textSize="@dimen/size"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/special_2017_frg_notice_security_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin"
+                android:layout_marginRight="@dimen/margin"
+                android:textSize="@dimen/size_small" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider"
+                android:background="@mipmap/item_divider" />
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin"
+                android:drawableLeft="@mipmap/line"
+                android:gravity="center"
+                android:text="乘车路线"
+                android:textSize="@dimen/size"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/special_2017_frg_notice_riding_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin"
+                android:layout_marginRight="@dimen/margin"
+                android:textSize="@dimen/size_small" />
+
+        </LinearLayout>
+
+
+    </ScrollView>
 
 </LinearLayout>

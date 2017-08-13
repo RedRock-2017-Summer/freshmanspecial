@@ -3,14 +3,11 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
-    <TextView
-        android:id="@+id/special_2017_frg_organizations_tv"
+    <View
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="15sp"
-        android:visibility="gone"
-        android:layout_margin="10dp"/>
+        android:layout_height="10dp"
+        android:background="@mipmap/item_divider"/>
+
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/special_2017_frg_organizations_rv"

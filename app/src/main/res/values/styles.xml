@@ -21,4 +21,19 @@
         <item name="android:windowIsFloating">true</item>
     </style>
 
+    <!--外距-->
+    <dimen name="margin">10dp</dimen>
+    <dimen name="margin_small">5dp</dimen>
+
+    <!--TextSize-->
+    <dimen name="size">20sp</dimen>
+    <dimen name="size_small">15sp</dimen>
+
+    <!--CardView的Radius-->
+    <dimen name="radius">10dp</dimen>
+    <dimen name="radius_small">5dp</dimen>
+
+    <!--item_divider-->
+    <dimen name="divider">10dp</dimen>
+
 </resources>

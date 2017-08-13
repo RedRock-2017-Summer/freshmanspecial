@@ -78,7 +78,7 @@ public class CQUPTElegantActivity extends AppCompatActivity implements ICQUPTEle
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case android.R.id.home:
-                Toast.makeText(this,"Hello",Toast.LENGTH_LONG).show();
+                finish();
                 break;
             default:break;
         }

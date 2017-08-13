@@ -46,33 +46,30 @@ public class StudentsPresenter implements IOrganizationPre {
                 try {
                     Organization organization = gson.fromJson(responseBody.string(), new TypeToken<Organization>() {
                     }.getType());
-                    if (organization.getStatus().equals("200")) {
-                        for (int i = 0; i < organization.getData().size(); i++) {
-                            tabLayout.addTab(tabLayout.newTab().setText(organization.getData().get(i).getName()));
-                            fragments.add(new OrganizationsFragment(organization.getData().get(i)));
+                    for (int i = 0; i < organization.getData().size(); i++) {
+                        tabLayout.addTab(tabLayout.newTab().setText(organization.getData().get(i).getName()));
+                        fragments.add(new OrganizationsFragment(organization.getData().get(i)));
+                    }
+
+                    replaceFragment(fragments.get(0));
+                    tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
+                    tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+                        @Override
+                        public void onTabSelected(TabLayout.Tab tab) {
+                            replaceFragment(fragments.get(tab.getPosition()));
                         }
 
-                        replaceFragment(fragments.get(0));
-                        tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
-                        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-                            @Override
-                            public void onTabSelected(TabLayout.Tab tab) {
-                                replaceFragment(fragments.get(tab.getPosition()));
-                            }
+                        @Override
+                        public void onTabUnselected(TabLayout.Tab tab) {
 
-                            @Override
-                            public void onTabUnselected(TabLayout.Tab tab) {
+                        }
 
-                            }
+                        @Override
+                        public void onTabReselected(TabLayout.Tab tab) {
 
-                            @Override
-                            public void onTabReselected(TabLayout.Tab tab) {
+                        }
+                    });
 
-                            }
-                        });
-                    } else {
-                        Toast.makeText(context, "请求数据失败,请检查你的网络连接!", Toast.LENGTH_SHORT).show();
-                    }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

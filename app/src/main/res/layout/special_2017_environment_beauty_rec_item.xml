@@ -3,13 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/margin_small"
     android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider"
+        android:background="@mipmap/item_divider" />
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_margin="10dp"
-        app:cardCornerRadius="5dp">
+        android:layout_height="200dp"
+        android:layout_margin="@dimen/margin"
+        app:cardCornerRadius="@dimen/radius_small">
 
         <ImageView
             android:id="@+id/special_2017_environment_item_iv"
@@ -23,18 +29,20 @@
         android:id="@+id/special_2017_environment_item_title_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
-        android:textStyle="bold"
-        android:textSize="20sp"/>
+        android:layout_marginBottom="@dimen/margin"
+        android:layout_marginLeft="@dimen/margin"
+        android:layout_marginRight="@dimen/margin"
+        android:textSize="@dimen/size"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/special_2017_frg_environment_item_content_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"
-        android:textSize="15sp"/>
+        android:layout_marginLeft="@dimen/margin"
+        android:layout_marginRight="@dimen/margin"
+        android:layout_marginBottom="@dimen/margin"
+        android:textSize="@dimen/size_small" />
+
 
 </LinearLayout>

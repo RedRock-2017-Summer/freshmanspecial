@@ -1,6 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@mipmap/item_divider" />
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@mipmap/line"
+                android:gravity="center"
+                android:padding="@dimen/margin"
+                android:text="饮食篇"
+                android:textSize="@dimen/size"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/special_2017_frg_tips_food_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/size_small"
+                android:layout_margin="@dimen/margin"/>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@mipmap/item_divider" />
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@mipmap/line"
+                android:gravity="center"
+                android:padding="@dimen/margin"
+                android:text="防晒篇"
+                android:textSize="@dimen/size"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/special_2017_frg_tips_sun_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/size_small"
+                android:layout_margin="@dimen/margin"/>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@mipmap/item_divider" />
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@mipmap/line"
+                android:gravity="center"
+                android:padding="@dimen/margin"
+                android:text="药品篇"
+                android:textSize="@dimen/size"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/special_2017_frg_tips_medicine_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/size_small"
+                android:layout_margin="@dimen/margin"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@mipmap/item_divider" />
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@mipmap/line"
+                android:gravity="center"
+                android:padding="@dimen/margin"
+                android:text="其它"
+                android:textSize="@dimen/size"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/special_2017_frg_tips_other_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/size_small"
+                android:layout_margin="@dimen/margin"/>
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
 
 </LinearLayout>
