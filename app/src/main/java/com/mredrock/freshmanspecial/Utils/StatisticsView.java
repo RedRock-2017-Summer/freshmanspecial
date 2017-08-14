@@ -5,9 +5,11 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.LinearGradient;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
+import android.graphics.Shader;
 import android.os.Build;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
@@ -156,6 +158,7 @@ public class StatisticsView extends View {
         Paint paint4 = new Paint(Paint.ANTI_ALIAS_FLAG);
         paint4.setStyle(Paint.Style.STROKE);
         paint4.setStrokeWidth(45);
+        paint4.setShader(new LinearGradient(x - rOut + change,y - rOut + change,x + rOut - change,y + rOut - change,colors[i],Color.WHITE, Shader.TileMode.CLAMP));
         paint4.setStrokeCap(Paint.Cap.ROUND);
         paint4.setColor(colors[i % colors.length]);
         paint4.setAlpha(50);
@@ -203,7 +206,7 @@ public class StatisticsView extends View {
         Paint paint3 = new Paint(Paint.ANTI_ALIAS_FLAG);
         paint3.setColor(colors[i % colors.length]);
         paint3.setTextSize(40);
-        canvas.drawText(String.valueOf(format.format(fraction[i] * 100)) + " %", x - LINE_WIDTH * 6, 40 + pTop + change, paint3);
+        canvas.drawText(String.valueOf(format.format(fraction[i] * 100)) + "%", x - LINE_WIDTH * 6, 40 + pTop + change, paint3);
 
         //画注释圈的字
         paint3.setColor(Color.BLACK);
