@@ -51,7 +51,7 @@ public class DormitoryMessRecAdapter extends RecyclerView.Adapter<DormitoryMessR
             public void onClick(View view) {
                 Intent intent = new Intent(context, ImageActivity.class);
                 String[] images = new String[dormitory.getData().get(position).getUrl().size()];
-                for (int i = 0; i < dormitory.getData().size(); i++) {
+                for (int i = 0; i < dormitory.getData().get(position).getUrl().size(); i++) {
                     images[i] = dormitory.getData().get(position).getUrl().get(i);
                 }
                 intent.putExtra("image_data", images);
