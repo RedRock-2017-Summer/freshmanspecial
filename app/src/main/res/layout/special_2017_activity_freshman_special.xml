@@ -12,58 +12,57 @@
         android:id="@+id/special_2017_ac_freshman_special_tb"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
+        android:background="@mipmap/bar"
         android:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
 
         <TextView
             android:layout_width="200dp"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:gravity="center"
-            android:text="2017迎新网"
+            android:text="重邮数据"
             android:textSize="20dp" />
+
 
     </android.support.v7.widget.Toolbar>
 
-        <ImageView
-            android:id="@+id/special_2017_ac_freshman_special_strategy_iv"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_margin="20dp"
-            android:scaleType="centerCrop"
-            android:src="@mipmap/strategy" />
-    
+    <ImageView
+        android:id="@+id/special_2017_ac_freshman_special_strategy_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="110dp"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:src="@mipmap/strategy" />
+
 
     <ImageView
         android:id="@+id/special_2017_ac_freshman_special_elegant_iv"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_width="wrap_content"
+        android:layout_height="110dp"
         android:layout_marginBottom="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:scaleType="centerCrop"
         android:src="@mipmap/elegant" />
 
 
     <ImageView
         android:id="@+id/special_2017_ac_freshman_special_data_iv"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_width="wrap_content"
+        android:layout_height="110dp"
         android:layout_marginBottom="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:scaleType="centerCrop"
         android:src="@mipmap/data" />
 
     <ImageView
         android:id="@+id/special_2017_ac_freshman_special_military_iv"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_width="wrap_content"
+        android:layout_height="110dp"
         android:layout_marginBottom="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:scaleType="centerCrop"
         android:src="@mipmap/military" />
 
 

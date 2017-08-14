@@ -5,23 +5,24 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <android.support.v7.widget.CardView
+
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_margin="5dp"
-        app:cardCornerRadius="30dp">
+        android:layout_height="wrap_content">
 
         <Button
             android:id="@+id/special_2017_frg_boy_and_girl_academic_bt"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:background="@color/lightBlue"
+            android:layout_height="50dp"
+            android:layout_margin="@dimen/margin"
+            android:background="@mipmap/academy_search"
             android:gravity="center_vertical"
-            android:padding="5dp"
+            android:padding="10dp"
             android:text="请选择学院"
             android:textSize="15dp" />
 
-    </android.support.v7.widget.CardView>
+
+    </FrameLayout>
 
     <View
         android:layout_width="match_parent"
@@ -36,7 +37,8 @@
         <com.mredrock.freshmanspecial.Utils.StatisticsView
             android:id="@+id/special_2017_frg_boy_and_girl_stv"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:paddingTop="5dp" />
 
     </LinearLayout>
 

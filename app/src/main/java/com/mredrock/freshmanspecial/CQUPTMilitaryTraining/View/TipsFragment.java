@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.mredrock.freshmanspecial.R;
 import com.mredrock.freshmanspecial.Utils.TxtReadUtil;
@@ -44,9 +45,19 @@ public class TipsFragment extends Fragment {
         medicineTv = view.findViewById(R.id.special_2017_frg_tips_medicine_tv);
         otherTv = view.findViewById(R.id.special_2017_frg_tips_other_tv);
 
-        foodTv.setText(TxtReadUtil.getContent(getResources().openRawResource(R.raw.food)));
-        sunTv.setText(TxtReadUtil.getContent(getResources().openRawResource(R.raw.sun)));
-        medicineTv.setText(TxtReadUtil.getContent(getResources().openRawResource(R.raw.medicine)));
-        otherTv.setText(TxtReadUtil.getContent(getResources().openRawResource(R.raw.other)));
+        foodTv.setText(getTheString(TxtReadUtil.getContent(getResources().openRawResource(R.raw.food))));
+        sunTv.setText(getTheString(TxtReadUtil.getContent(getResources().openRawResource(R.raw.sun))));
+        medicineTv.setText(getTheString(TxtReadUtil.getContent(getResources().openRawResource(R.raw.medicine))));
+        otherTv.setText(getTheString(TxtReadUtil.getContent(getResources().openRawResource(R.raw.other))));
+    }
+
+    private String getTheString(String string) {
+        String[] foods = string.split(":");
+        StringBuilder stringBuilder = new StringBuilder(100);
+        for (int i = 0;i < foods.length;i++){
+            stringBuilder.append(foods[i]);
+            stringBuilder.append("\n");
+        }
+        return stringBuilder.toString();
     }
 }

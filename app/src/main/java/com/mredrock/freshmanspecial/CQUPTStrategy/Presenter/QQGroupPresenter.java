@@ -8,6 +8,8 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -93,6 +95,8 @@ public class QQGroupPresenter implements IQQGroupPre {
                         searchBt.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
+                                InputMethodManager inputMethodManager = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+                                inputMethodManager.hideSoftInputFromWindow(searchBt.getWindowToken(), 0);
                                 if (!TextUtils.isEmpty(autoCompleteTextView.getText())) {
                                     String sc = String.valueOf(autoCompleteTextView.getText());
                                     List<Integer> index = new ArrayList<>();
@@ -116,7 +120,7 @@ public class QQGroupPresenter implements IQQGroupPre {
                                     resultTv.setText(result);
                                 } else {
                                     StringBuilder result = new StringBuilder(100);
-                                    result.append("新生群:\n");
+                                    result.append("全部群:\n");
                                     for (int i = 0; i < qqGroup.getData().size(); i++) {
                                         result.append(qqGroup.getData().get(i).getGroupName())
                                                 .append(":")

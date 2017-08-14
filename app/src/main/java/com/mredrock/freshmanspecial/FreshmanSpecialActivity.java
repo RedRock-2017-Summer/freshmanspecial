@@ -3,12 +3,16 @@ package com.mredrock.freshmanspecial;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -29,6 +33,7 @@ public class FreshmanSpecialActivity extends AppCompatActivity {
     private ImageView elegant;
     private ImageView data;
     private ImageView military;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +43,7 @@ public class FreshmanSpecialActivity extends AppCompatActivity {
         elegant = (ImageView) findViewById(R.id.special_2017_ac_freshman_special_elegant_iv);
         data = (ImageView) findViewById(R.id.special_2017_ac_freshman_special_data_iv);
         military = (ImageView) findViewById(R.id.special_2017_ac_freshman_special_military_iv);
+        toolbar = (Toolbar) findViewById(R.id.special_2017_ac_freshman_special_tb);
 
         getDialog();
         initView();
@@ -75,9 +81,16 @@ public class FreshmanSpecialActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        setSupportActionBar(toolbar);
 
-        UltimateBar ultimateBar = new UltimateBar(this);
-        ultimateBar.setColorBar(ContextCompat.getColor(this, R.color.colorPrimary));
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null){
+            actionBar.setHomeAsUpIndicator(R.mipmap.back);
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+
+
+
     }
 
     private void getDialog() {
@@ -95,5 +108,17 @@ public class FreshmanSpecialActivity extends AppCompatActivity {
                 }
             });
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                finish();
+                break;
+            default:
+                break;
+        }
+        return true;
     }
 }

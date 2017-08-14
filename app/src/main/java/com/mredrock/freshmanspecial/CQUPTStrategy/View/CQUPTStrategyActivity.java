@@ -9,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.mredrock.freshmanspecial.CQUPTStrategy.Interface.ICQUPTStrategyAct;
@@ -44,15 +46,11 @@ public class CQUPTStrategyActivity extends AppCompatActivity implements ICQUPTSt
         tabLayout.addOnTabSelectedListener(this);
         icquptStrategyPre.modifyTabLayout(tabLayout);
 
-        UltimateBar ultimateBar = new UltimateBar(this);
-        ultimateBar.setColorBar(ContextCompat.getColor(this, R.color.colorPrimary));
-
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setHomeAsUpIndicator(R.mipmap.back);
+        if (actionBar != null){
             actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setDisplayShowTitleEnabled(false);
+            actionBar.setHomeAsUpIndicator(R.mipmap.back);
         }
     }
 
@@ -71,10 +69,9 @@ public class CQUPTStrategyActivity extends AppCompatActivity implements ICQUPTSt
 
     }
 
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
+        switch (item.getItemId()){
             case android.R.id.home:
                 finish();
                 break;
@@ -83,4 +80,5 @@ public class CQUPTStrategyActivity extends AppCompatActivity implements ICQUPTSt
         }
         return true;
     }
+
 }

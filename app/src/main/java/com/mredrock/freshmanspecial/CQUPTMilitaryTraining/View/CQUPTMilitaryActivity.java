@@ -9,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.mredrock.freshmanspecial.CQUPTMilitaryTraining.Interface.ICQUPTMilitaryAct;
@@ -44,15 +46,11 @@ public class CQUPTMilitaryActivity extends AppCompatActivity implements ICQUPTMi
         tabLayout.addOnTabSelectedListener(this);
         icquptMilitaryPre.modifyTabLayout(tabLayout);
 
-        UltimateBar ultimateBar = new UltimateBar(this);
-        ultimateBar.setColorBar(ContextCompat.getColor(this, R.color.colorPrimary));
-
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
+        if (actionBar != null){
             actionBar.setHomeAsUpIndicator(R.mipmap.back);
             actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setDisplayShowTitleEnabled(false);
         }
     }
 
@@ -73,7 +71,7 @@ public class CQUPTMilitaryActivity extends AppCompatActivity implements ICQUPTMi
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
+        switch (item.getItemId()){
             case android.R.id.home:
                 finish();
                 break;
@@ -82,4 +80,5 @@ public class CQUPTMilitaryActivity extends AppCompatActivity implements ICQUPTMi
         }
         return true;
     }
+
 }

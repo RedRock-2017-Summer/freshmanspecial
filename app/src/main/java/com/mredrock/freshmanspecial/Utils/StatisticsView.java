@@ -29,8 +29,8 @@ public class StatisticsView extends View {
 
     private boolean flag = false;
     private float[] fraction;
-    private float[] values = {0f,0f};
-    private String[] subs = {"无","无"};
+    private float[] values = {0f, 0f};
+    private String[] subs = {"无", "无"};
     private float x;
     private float y;
     private float rOut;
@@ -40,14 +40,13 @@ public class StatisticsView extends View {
     private int pTop;
     private int pBottom;
     private static final int LINE_WIDTH = 25;
-    private static final int DIVIDER = 10 + LINE_WIDTH*2;
-    private static final int GREY = Color.parseColor("#cccccc");
-    private static final int LIGHT_YELLOW = Color.parseColor("#ffff66");
+    private static final int DIVIDER = 15 + LINE_WIDTH * 2;
+    private static final int LIGHT_YELLOW = Color.parseColor("#ff9966");
     private static final int LIGHT_BLUE = Color.parseColor("#99ccff");
     private static final int LIGHT_PURPLE = Color.parseColor("#0099cc");
     private static final int LIGHT_ORANGE = Color.parseColor("#ffcc99");
-    private int[] colors = {LIGHT_YELLOW,LIGHT_BLUE,LIGHT_PURPLE,LIGHT_ORANGE};
-    private DecimalFormat format = new DecimalFormat( "0.00 ");
+    private int[] colors = {LIGHT_YELLOW, LIGHT_BLUE, LIGHT_PURPLE, LIGHT_ORANGE};
+    private DecimalFormat format = new DecimalFormat("0.00 ");
 
     public StatisticsView(Context context) {
         super(context);
@@ -63,13 +62,9 @@ public class StatisticsView extends View {
     }
 
 
-    private void init() {
-        getAnimator();
-    }
-
     private void getAnimator() {
         fraction = new float[values.length];
-        for(int i= 0;i < values.length;i++){
+        for (int i = 0; i < values.length; i++) {
             final ValueAnimator animator = ValueAnimator.ofFloat(values[i]).setDuration(1000);
             animator.setInterpolator(new LinearInterpolator());
             final int finalI = i;
@@ -77,6 +72,7 @@ public class StatisticsView extends View {
                 @Override
                 public void onAnimationUpdate(ValueAnimator valueAnimator) {
                     fraction[finalI] = (float) animator.getAnimatedValue();
+                    //真正实现动画的地方
                     invalidate();
                 }
             });
@@ -86,13 +82,14 @@ public class StatisticsView extends View {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        init();
+        getAnimator();
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
 
     public void setValues(float[] values) {
         this.values = values;
         requestLayout();
+        //防止requestLayout不会重绘
         invalidate();
     }
 
@@ -106,9 +103,9 @@ public class StatisticsView extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        switch (event.getAction()){
+        switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                init();
+                getAnimator();
                 break;
         }
         return true;
@@ -123,26 +120,26 @@ public class StatisticsView extends View {
         pTop = getPaddingTop();
         pBottom = getPaddingBottom();
 
-        rOut = Math.min((getWidth() - pLeft - pRight) / 2, ((getHeight() - pTop - pBottom) / 2)*0.7f);
+        rOut = Math.min((getWidth() - pLeft - pRight) / 2, ((getHeight() - pTop - pBottom) / 2) * 0.7f);
         x = rOut + pLeft + Math.abs((getWidth() - pLeft - pRight) / 2 - rOut);
-        y = rOut + pTop + Math.abs(((getHeight() - pTop - pBottom) / 2)*0.7f - rOut);
+        y = rOut + pTop + Math.abs(((getHeight() - pTop - pBottom) / 2) * 0.7f - rOut);
         rIn = rOut - LINE_WIDTH * 2;
 
 
-        if (this.isAttachedToWindow()){
-            if (flag == false){
-                init();
+        if (this.isAttachedToWindow()) {
+            if (flag == false) {
+                getAnimator();
             }
             flag = true;
-            for (int i = 0;i < values.length;i++){
-                drawLittleCircle(canvas,i);
+            for (int i = 0; i < values.length; i++) {
+                drawLittleCircle(canvas, i);
             }
         }
     }
 
 
     private void drawLittleCircle(Canvas canvas, int i) {
-        int change = DIVIDER*i;
+        int change = DIVIDER * i;
 
         Path path = new Path();
         Paint paint1 = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -177,7 +174,7 @@ public class StatisticsView extends View {
         //开始的半圆
         path.addArc(new RectF(x - LINE_WIDTH, y - rOut + change, x + LINE_WIDTH, y - rIn + change), 90, 180);
         //外圈
-        path.addArc(new RectF(x - rOut + change, y - rOut +change, x + rOut - change, y + rOut - change), 270, fraction[i] * 360);
+        path.addArc(new RectF(x - rOut + change, y - rOut + change, x + rOut - change, y + rOut - change), 270, fraction[i] * 360);
         float x1 = (float) (x + (rOut - LINE_WIDTH - change) * Math.sin(2 * fraction[i] * Math.PI));
         float y1 = (float) (y - (rOut - LINE_WIDTH - change) * Math.cos(2 * fraction[i] * Math.PI));
 
@@ -188,10 +185,10 @@ public class StatisticsView extends View {
 
         //画下面的注释
         float vWidth = (getWidth() - pLeft - pRight) / 3;
-        float vHeight = rOut*2 + pTop + (getHeight() - pTop - pBottom)*0.2f / 4 / 2;
-        float vR = (getHeight() - pTop - pBottom)*0.2f / 4 / 2;
-        float x2 =  (getHeight() - pTop - pBottom)*0.1f / 5;
-        path.addCircle(vWidth + vR,vHeight + 2*vR*i + x2*(i + 1),vR, Path.Direction.CW);
+        float vHeight = rOut * 2 + pTop + (getHeight() - pTop - pBottom) * 0.2f / 4 / 2;
+        float vR = (getHeight() - pTop - pBottom) * 0.2f / 4 / 2;
+        float x2 = (getHeight() - pTop - pBottom) * 0.1f / 5;
+        path.addCircle(vWidth + vR, vHeight + 2 * vR * i + x2 * (i + 1), vR, Path.Direction.CW);
 
         canvas.drawPath(path, paint1);
 
@@ -199,7 +196,7 @@ public class StatisticsView extends View {
         Paint paint2 = new Paint();
         paint2.setColor(colors[i % colors.length]);
         paint2.setStyle(Paint.Style.FILL);
-        canvas.drawCircle(vWidth + vR,vHeight + 2*vR*i + x2*(i + 1),vR - 2.5f,paint2);
+        canvas.drawCircle(vWidth + vR, vHeight + 2 * vR * i + x2 * (i + 1), vR - 2.5f, paint2);
 
 
         //描写数量
@@ -210,8 +207,8 @@ public class StatisticsView extends View {
 
         //画注释圈的字
         paint3.setColor(Color.BLACK);
-        paint3.setTextSize(vR*2);
-        canvas.drawText(subs[i],vWidth + vR*2.5f,vHeight + vR + 2*vR*i + x2*(i + 1) ,paint3);
+        paint3.setTextSize(vR * 2);
+        canvas.drawText(subs[i], vWidth + vR * 2.5f, vHeight + vR + 2 * vR * i + x2 * (i + 1), paint3);
 
     }
 }

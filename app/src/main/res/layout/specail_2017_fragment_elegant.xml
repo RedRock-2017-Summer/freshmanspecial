@@ -1,91 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <LinearLayout
+        <View
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="10dp"
+            android:background="@mipmap/item_divider" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="10dp"
-                android:background="@mipmap/item_divider"/>
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@mipmap/line"
+            android:gravity="center"
+            android:padding="@dimen/margin"
+            android:text="军训图片"
+            android:textSize="@dimen/size"
+            android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:drawableLeft="@mipmap/line"
-                android:gravity="center"
-                android:padding="@dimen/margin"
-                android:text="军训图片"
-                android:textSize="@dimen/size"
-                android:textStyle="bold" />
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/special_2017_frg_elegant_photo_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/special_2017_frg_elegant_photo_rv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-            </android.support.v7.widget.RecyclerView>
+        </android.support.v7.widget.RecyclerView>
 
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="10dp"
-                android:background="@mipmap/item_divider"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@mipmap/item_divider" />
 
 
-            <TextView
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:drawableLeft="@mipmap/line"
-                android:gravity="center"
-                android:padding="@dimen/margin"
-                android:text="军训视频"
-                android:textSize="@dimen/size"
-                android:textStyle="bold" />
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@mipmap/line"
+            android:gravity="center"
+            android:padding="@dimen/margin"
+            android:text="军训视频"
+            android:textSize="@dimen/size"
+            android:textStyle="bold" />
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/special_2017_frg_elegant_video_rv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/special_2017_frg_elegant_video_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-            </android.support.v7.widget.RecyclerView>
+        </android.support.v7.widget.RecyclerView>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="10dp"
-                android:background="@mipmap/item_divider"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@mipmap/item_divider" />
 
-            <TextView
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:drawableLeft="@mipmap/line"
-                android:gravity="center"
-                android:padding="@dimen/margin"
-                android:text="军歌推荐"
-                android:textSize="@dimen/size"
-                android:textStyle="bold" />
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@mipmap/line"
+            android:gravity="center"
+            android:padding="@dimen/margin"
+            android:text="军歌推荐"
+            android:textSize="@dimen/size"
+            android:textStyle="bold" />
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/special_2017_frg_elegant_songs_rv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/special_2017_frg_elegant_songs_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-            </android.support.v7.widget.RecyclerView>
-
-
-        </LinearLayout>
-
-    </ScrollView>
+        </android.support.v7.widget.RecyclerView>
 
 
-</LinearLayout>
+    </LinearLayout>
+
+
+</ScrollView>

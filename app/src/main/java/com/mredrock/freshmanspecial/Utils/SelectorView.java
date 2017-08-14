@@ -1,5 +1,6 @@
 package com.mredrock.freshmanspecial.Utils;
 
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
@@ -10,6 +11,7 @@ import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.LinearInterpolator;
 import android.widget.Button;
 import android.widget.Scroller;
 import android.widget.TextView;
@@ -43,6 +45,7 @@ public class SelectorView extends ViewGroup {
     private int mLastYIntercept = 0;
     private Scroller mScroller;
     private VelocityTracker mVelocityTracker;
+    private float fraction;
 
     public void setButton(Button button) {
         this.button = button;
@@ -54,10 +57,6 @@ public class SelectorView extends ViewGroup {
         academies.add("亲,还没有选择");
         academies.add("亲,还没有选择");
         init();
-    }
-
-    public int getFlag() {
-        return flag;
     }
 
     public SelectorView(Context context, AttributeSet attrs) {
@@ -84,6 +83,10 @@ public class SelectorView extends ViewGroup {
         init();
     }
 
+
+    public int getFlag() {
+        return flag;
+    }
 
     private void init() {
 
@@ -171,7 +174,6 @@ public class SelectorView extends ViewGroup {
                 }
                 break;
             case MotionEvent.ACTION_MOVE:
-                invalidate();
                 int deltaY = y - mLastY;
                 scrollBy(0, -deltaY);
                 break;
@@ -179,12 +181,14 @@ public class SelectorView extends ViewGroup {
                 int scrollY = getScrollY();
                 mVelocityTracker.computeCurrentVelocity(1000);
                 float yVelocity = mVelocityTracker.getYVelocity();
+
                 if (Math.abs(yVelocity) >= 50) {
                     mChildIndex = yVelocity > 0 ? mChildIndex - 1 : mChildIndex + 1;
                 } else {
                     mChildIndex = (getScrollY() + mChildHeight / 2) / mChildHeight;
                 }
 
+                //超级重要进行移动范围的判断,不判断会崩的
                 mChildIndex = Math.max(-2, Math.min(mChildIndex, academies.size() - 3));
                 int dy = mChildIndex * mChildHeight - scrollY;
                 flag += (mChildIndex - mOldChildIndex);
@@ -199,6 +203,20 @@ public class SelectorView extends ViewGroup {
         mLastY = y;
         return true;
     }
+
+
+//    private void getAnimator(float x) {
+//        final ValueAnimator animator = ValueAnimator.ofFloat(x).setDuration(5000);
+//        animator.setInterpolator(new LinearInterpolator());
+//        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+//            @Override
+//            public void onAnimationUpdate(ValueAnimator valueAnimator) {
+//                fraction = (float) animator.getAnimatedValue();
+//                smoothScrollBy(0, (int) fraction);
+//            }
+//        });
+//        animator.start();
+//    }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
@@ -268,7 +286,7 @@ public class SelectorView extends ViewGroup {
             textView.setAlpha(0.8f);
             //当外面的代码进行动态添加的时候，此时中间代码字的显示
             textView.setText(academies.get(flag));
-            for (int i = 1; i < academies.size(); i++) {
+            for (int i = 1; i < academies.size() / 2 + 1; i++) {
                 if (flag - i >= 0) {
                     TextView textView2 = (TextView) views.get(flag - i);
                     setTextView(textView2, i);
@@ -309,14 +327,14 @@ public class SelectorView extends ViewGroup {
             academies.add("亲，没有选择");
         }
         //进行flag的设置
-        if (!isCreated) {
-            if (academies.size() > 2) {
-                flag = 2;
-            } else {
-                flag = academies.size() - 1;
-            }
-            isCreated = true;
-        }
+//        if (!isCreated) {
+//            if (academies.size() > 2) {
+//                flag = 2;
+//            } else {
+//                flag = academies.size() - 1;
+//            }
+//            isCreated = true;
+//        }
 
         if (academies.size() < this.academies.size()) {
             for (int i = 1; i < this.academies.size(); i++) {

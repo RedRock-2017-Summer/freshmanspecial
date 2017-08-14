@@ -9,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.mredrock.freshmanspecial.CQUPTData.Interface.ICAUPTDataAct;
@@ -40,28 +42,25 @@ public class CQUPTDataActivity extends AppCompatActivity implements ICAUPTDataAc
         viewPager = (ViewPager) findViewById(R.id.special_2017_ac_data_vp);
 
         FragmentManager manager = getSupportFragmentManager();
-        ICQUPTDataPre.setTabLayout(manager,tabLayout,viewPager);
+        ICQUPTDataPre.setTabLayout(manager, tabLayout, viewPager);
         tabLayout.addOnTabSelectedListener(this);
         ICQUPTDataPre.modifyTabLayout(tabLayout);
 
-        UltimateBar ultimateBar = new UltimateBar(this);
-        ultimateBar.setColorBar(ContextCompat.getColor(this, R.color.colorPrimary));
 
         setSupportActionBar(toolbar);
+
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null){
             actionBar.setHomeAsUpIndicator(R.mipmap.back);
             actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setDisplayShowTitleEnabled(false);
         }
+
     }
-
-
 
 
     @Override
     public void onTabSelected(TabLayout.Tab tab) {
-       viewPager.setCurrentItem(tab.getPosition());
+        viewPager.setCurrentItem(tab.getPosition());
     }
 
     @Override
@@ -80,8 +79,10 @@ public class CQUPTDataActivity extends AppCompatActivity implements ICAUPTDataAc
             case android.R.id.home:
                 finish();
                 break;
-            default:break;
+            default:
+                break;
         }
         return true;
     }
+
 }

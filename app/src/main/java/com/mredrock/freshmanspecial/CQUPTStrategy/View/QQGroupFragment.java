@@ -53,7 +53,7 @@ public class QQGroupFragment extends Fragment implements IQQGroupFrg {
         searchBt = view.findViewById(R.id.special_2017_frg_qqgroup_search_bt);
         cancelBt = view.findViewById(R.id.special_2017_frg_qqgroup_cancel_bt);
         resultTv = view.findViewById(R.id.special_2017_frg_qqgroup_result_tv);
-        iqqGroupPre.setAutoCompleteTextView(getContext(), autoCompleteTextView, cancelTv,
+        iqqGroupPre.setAutoCompleteTextView(getContext(),autoCompleteTextView, cancelTv,
                 searchBt, cancelBt, resultTv);
     }
 }
