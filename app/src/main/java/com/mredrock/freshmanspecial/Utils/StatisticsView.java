@@ -158,7 +158,7 @@ public class StatisticsView extends View {
         Paint paint4 = new Paint(Paint.ANTI_ALIAS_FLAG);
         paint4.setStyle(Paint.Style.STROKE);
         paint4.setStrokeWidth(45);
-        paint4.setShader(new LinearGradient(x - rOut + change,y - rOut + change,x + rOut - change,y + rOut - change,colors[i],Color.WHITE, Shader.TileMode.CLAMP));
+        paint4.setShader(new LinearGradient(x - rOut + change,y + rOut + change,x + rOut - change,y - rOut - change,colors[i],Color.WHITE, Shader.TileMode.CLAMP));
         paint4.setStrokeCap(Paint.Cap.ROUND);
         paint4.setColor(colors[i % colors.length]);
         paint4.setAlpha(50);
